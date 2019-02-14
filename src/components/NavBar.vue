@@ -5,11 +5,9 @@
                 <router-link to="">
                     <span class="nav-title">Good Grinds</span>
                 </router-link>
-                <a href="" class="btn-floating btn-large halfway-fab orange darken-1">
-                    <router-link to="">
-                        <i class="material-icons">add</i>
-                    </router-link>
-                </a>
+                <router-link to="" class="btn-floating btn-large halfway-fab orange darken-1">
+                    <i class="material-icons">add</i>
+                </router-link>
             </div>    
         </nav>        
     </div>
@@ -29,6 +27,9 @@ export default {
 <style scoped>
 .navbar nav {
     padding: 0 1.25rem;
+}
+.nav-content a:focus {
+    outline: 2px dashed pink;
 }
 </style>
 
