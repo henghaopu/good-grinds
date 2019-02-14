@@ -1,4 +1,5 @@
 # good-grinds
+Coffee Recipes powered by Vue CLI 3 and Firebase
 
 ## Project setup
 ```
