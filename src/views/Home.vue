@@ -2,10 +2,11 @@
   <div class="home container">
     <div class="card" v-for="coffee in coffeeList" :key="coffee.id">
       <div class="card-content">
-        <h2 class="brown-text">{{coffee.name}}</h2>
+        <i class="material-icons delete" tabindex="0">delete</i>
+        <h2 class="brown-text">{{ coffee.name }}</h2>
         <ul class="ingredients">
           <li v-for="(ingredient, index) in coffee.ingredients" :key="index">
-            <span class="chip">{{ingredient}}</span>
+            <span class="chip">{{ ingredient }}</span>
           </li>
         </ul>
       </div>
@@ -55,5 +56,17 @@ export default {
 .home .ingredients li {
   display: inline-block;
 }
+.home .delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.4rem;
+  color: hsl(0, 0%, 45%);
+  cursor: pointer;
+}
+.home .delete:focus {
+  outline: 2px dashed pink;
+}
+
 </style>
 
