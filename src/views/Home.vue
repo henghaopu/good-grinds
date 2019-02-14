@@ -2,7 +2,7 @@
   <div class="home container">
     <div class="card" v-for="coffee in coffeeList" :key="coffee.id">
       <div class="card-content">
-        <i class="material-icons delete" tabindex="0">delete</i>
+        <i class="material-icons delete" tabindex="0" @click="deleteCoffee($event, coffee.id)" @keyup="deleteCoffee($event, coffee.id)">delete</i>
         <h2 class="brown-text">{{ coffee.name }}</h2>
         <ul class="ingredients">
           <li v-for="(ingredient, index) in coffee.ingredients" :key="index">
@@ -26,6 +26,24 @@ export default {
         {id: '3', name: 'Latte', subPath: 'latte', ingredients: ['Espresso', 'Steamed Milk', 'Milk Foam']}, 
         {id: '4', name: 'Mocha', subPath: 'mocha', ingredients: ['Espresso', 'Steamed milk', 'Milk Foam', 'Chocolate powder']}
       ]
+    }
+  },
+  methods: {
+    deleteCoffee(event, id) {
+      switch (event.type) {
+        case 'click':
+          this.coffeeList = this.coffeeList.filter(coffee => {
+            return coffee.id !== id
+          })
+          break
+        case 'keyup':
+          if (event.keyCode === 13) {
+            this.coffeeList = this.coffeeList.filter(coffee => {
+              return coffee.id !== id
+            })
+          }
+          break;
+      }
     }
   },
   components: {
