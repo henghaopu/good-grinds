@@ -1,5 +1,5 @@
 # good-grinds
-Coffee Recipes powered by Vue CLI 3 and Firebase
+Coffee Recipes powered by Vue CLI 3, Firebase, Materialize, and Google Icon Font
 
 ## Project setup
 ```
