@@ -30,19 +30,10 @@ export default {
   },
   methods: {
     deleteCoffee(event, id) {
-      switch (event.type) {
-        case 'click':
-          this.coffeeList = this.coffeeList.filter(coffee => {
-            return coffee.id !== id
-          })
-          break
-        case 'keyup':
-          if (event.keyCode === 13) {
-            this.coffeeList = this.coffeeList.filter(coffee => {
-              return coffee.id !== id
-            })
-          }
-          break;
+      if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
+        this.coffeeList = this.coffeeList.filter(coffee => {
+          return coffee.id !== id
+        })
       }
     }
   },
