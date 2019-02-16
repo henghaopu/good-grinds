@@ -6,6 +6,11 @@ Coffee Recipes powered by Vue CLI 3, Firebase, Materialize, and Google Icon Font
 npm install
 ```
 
+## Firebase setup
+```
+npm install firebase —save
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
