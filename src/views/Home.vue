@@ -2,7 +2,7 @@
   <div class="home container">
     <div class="card" v-for="coffee in coffeeCollection" :key="coffee.id">
       <div class="card-content">
-        <i class="material-icons delete" tabindex="0" @click="deleteCoffee($event, coffee.id)" @keyup="deleteCoffee($event, coffee.id)">delete</i>
+        <i class="material-icons delete" tabindex="0" @click="deleteCoffee(coffee.id)" @keyup.enter="deleteCoffee(coffee.id)">delete</i>
         <h2 class="brown-text">{{ coffee.name }}</h2>
         <ul class="ingredients">
           <li v-for="(ingredient, index) in coffee.ingredients" :key="index">
@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    deleteCoffee(event, id) {
+    deleteCoffee(id) {
       
       // if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
       //// delete local data  
@@ -42,16 +42,15 @@ export default {
       //   })
       // }
 
-      if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
-        // delete document from Firestore
-        db.collection('coffeeCollection').doc(id).delete()
-        .then(() => {
-          // update(delete) local data
-          this.coffeeCollection = this.coffeeCollection.filter(coffee => {
-            return coffee.id !== id
-          })
+      // delete document from Firestore
+      db.collection('coffeeCollection').doc(id).delete()
+      .then(() => {
+        // update(delete) local data
+        this.coffeeCollection = this.coffeeCollection.filter(coffee => {
+          return coffee.id !== id
         })
-      }
+      })
+      
     }
   },
   created () {
