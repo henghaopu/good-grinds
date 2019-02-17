@@ -2,7 +2,7 @@
   <div class="home container">
     <div class="card" v-for="coffee in coffeeCollection" :key="coffee.id">
       <div class="card-content">
-        <i class="material-icons delete" tabindex="0" @click="deleteCoffee(coffee.id)" @keyup.enter="deleteCoffee(coffee.id)">delete</i>
+        <i v-if="coffee.isDeletable" class="material-icons delete" tabindex="0" @click="deleteCoffee(coffee.id)" @keyup.enter="deleteCoffee(coffee.id)">delete</i>
         <h2 class="brown-text">{{ coffee.name }}</h2>
         <ul class="ingredients">
           <li v-for="(ingredient, index) in coffee.ingredients" :key="index">
