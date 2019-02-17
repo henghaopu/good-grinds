@@ -34,9 +34,22 @@ export default {
   },
   methods: {
     deleteCoffee(event, id) {
+      
+      // if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
+      //// delete local data  
+      //   this.coffeeCollection = this.coffeeCollection.filter(coffee => {
+      //     return coffee.id !== id
+      //   })
+      // }
+
       if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
-        this.coffeeCollection = this.coffeeCollection.filter(coffee => {
-          return coffee.id !== id
+        // delete document from Firestore
+        db.collection('coffeeCollection').doc(id).delete()
+        .then(() => {
+          // update(delete) local data
+          this.coffeeCollection = this.coffeeCollection.filter(coffee => {
+            return coffee.id !== id
+          })
         })
       }
     }
