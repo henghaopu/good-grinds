@@ -1,5 +1,6 @@
 # good-grinds
 Coffee Recipes powered by Vue CLI 3, Firebase, Materialize, and Google Icon Font
+App Url: https://good-grinds.firebaseapp.com
 
 ## Project setup
 ```
