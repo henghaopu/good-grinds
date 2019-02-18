@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="field center-align">
-                <button class="btn orange darken-1">Add Coffee</button>
+                <button class="btn" ontouchstart="">Add Coffee</button>
             </div>
         </form>
     </div>
@@ -111,12 +111,18 @@ export default {
     color: hsl(0, 0%, 60%);
     cursor: pointer;
 }
-.input-icon-wrap i:hover {
+.input-icon-wrap i:hover, .input-icon-wrap i:active {
     color: hsl(0, 0%, 45%);
 }
 .input-icon-wrap i:focus {
     outline: 2px dashed pink;
     color: hsl(171, 17%, 51%);
+}
+.btn {
+    background-color: hsl(33, 100%, 50%);
+}
+button:active {
+    background: hsl(33, 100%, 60%);
 }
 button:focus {
     outline: 2px dashed pink;
