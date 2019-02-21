@@ -11,7 +11,7 @@
                 <label :for="index">Added Ingredient</label>
                 <!-- <input type="text" :value="ingredient"> -->
                 <input type="text" :id="index" v-model="addedIngredients[index]"> 
-                <i class="material-icons" @click="deleteIngredient(ingredient)">remove_circle_outline</i>
+                <i class="material-icons" tabindex="0" @click="deleteIngredient(ingredient)" @keyup.enter="deleteIngredient(ingredient)">remove_circle_outline</i>
             </div>
             <div class="field add-ingredient">
                 <label for="add-ingredient">Add an Ingredient (Optional)</label>
@@ -79,7 +79,7 @@ export default {
             }
         },
         deleteIngredient(ingredient) {
-            this.ingredients = this.ingredients.filter((ingre) => {
+            this.addedIngredients = this.addedIngredients.filter((ingre) => {
                 return ingre != ingredient
             })
         }
