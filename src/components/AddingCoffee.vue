@@ -11,13 +11,12 @@
                 <label :for="index">Added Ingredient</label>
                 <!-- <input type="text" :value="ingredient"> -->
                 <input type="text" :id="index" v-model="addedIngredients[index]"> 
+                <i class="material-icons" @click="deleteIngredient(ingredient)">remove_circle_outline</i>
             </div>
             <div class="field add-ingredient">
                 <label for="add-ingredient">Add an Ingredient (Optional)</label>
-                <div class="input-icon-wrap">
-                    <input type="text" id="add-ingredient" placeholder="My Special Ingredient" v-model="newIngredient">
-                    <i class="material-icons" tabindex="0" @click="addIngredient" @keyup.enter="addIngredient">add_circle_outline</i>
-                </div>
+                <input type="text" id="add-ingredient" placeholder="My Special Ingredient" v-model="newIngredient">
+                <i class="material-icons" tabindex="0" @click="addIngredient" @keyup.enter="addIngredient">add_circle_outline</i>
             </div>
             <div class="field center-align">
                 <button class="btn" ontouchstart="">Add Coffee</button>
@@ -78,6 +77,11 @@ export default {
                 this.addedIngredients.push(this.newIngredient)
                 this.newIngredient = null
             }
+        },
+        deleteIngredient(ingredient) {
+            this.ingredients = this.ingredients.filter((ingre) => {
+                return ingre != ingredient
+            })
         }
     }
 }
@@ -101,20 +105,24 @@ export default {
 .add-coffee .field {
     margin: 1.25rem auto;
 }
-.input-icon-wrap {
+.add-ingredient, 
+.added-ingredient {
     position: relative;
 }
-.input-icon-wrap i {
+.add-ingredient i, 
+.added-ingredient i {
     position: absolute;
     right: 0px;
-    top: 10px;
+    bottom: 16px;
     color: hsl(0, 0%, 60%);
     cursor: pointer;
 }
-.input-icon-wrap i:hover, .input-icon-wrap i:active {
+.add-ingredient i:hover, .add-ingredient i:active,
+.added-ingredient i:hover, .added-ingredient i:active {
     color: hsl(0, 0%, 45%);
 }
-.input-icon-wrap i:focus {
+.add-ingredient i:focus, 
+.added-ingredient i:focus {
     outline: 2px dashed pink;
     color: hsl(171, 17%, 51%);
 }
