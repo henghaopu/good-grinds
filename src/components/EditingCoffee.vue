@@ -27,12 +27,15 @@
 
 <script>
 import db from '@/firebase/init'
+import slugify from 'slugify'
 export default {
     name: 'EditingCoffee',
     data() {
         return {
             coffee: null,
             newIngredient: null,
+
+            isEntered: false,
             reminder: null
         }
     },
@@ -43,7 +46,7 @@ export default {
         ref.get().then(snapshot => {
             snapshot.forEach(doc => {
                 this.coffee = doc.data()
-                this.coffee.if = doc.id
+                this.coffee.id = doc.id
             })
         })
     },
@@ -60,7 +63,31 @@ export default {
             })
         },
         editCoffee() {
-            console.log(this.coffee)
+            if (this.coffee.name) {
+                this.isEntered = true
+                this.reminder = null
+                // create a subPath
+                this.coffee.subPath = slugify(this.coffee.name, {
+                    replacement: '-',
+                    remove: /[*_+~.()^'"!\-:@]/g,
+                    lower: true
+                })
+                db.collection('coffeeCollection').doc(this.coffee.id).update({
+                    name: this.coffee.name,
+                    subPath: this.coffee.subPath,
+                    ingredients: this.coffee.ingredients,
+                    isDeletable: true
+                }).then(()=> {
+                    // redirect the user to the home page
+                    this.$router.push({ name: 'home' })
+                }).catch( err => {
+                    console.log(err)
+                })
+            } else {
+                this.isEntered = false
+                this.reminder = '(Woops! forgot to name your coffee?)'
+                this.coffee.name = null
+            }
         }
     }
 }
