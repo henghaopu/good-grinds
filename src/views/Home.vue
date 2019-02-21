@@ -10,6 +10,9 @@
           </li>
         </ul>
       </div>
+      <router-link v-if="coffee.isDeletable" :to="{name: 'editing-coffee', params: {coffee_path: coffee.subPath}}" class="btn-floating btn-medium halfway-fab orange darken-1" tabindex="0">
+        <i class="material-icons">edit</i>
+      </router-link>
     </div>
   </div>
 </template>
@@ -100,9 +103,15 @@ export default {
   color: hsl(0, 0%, 45%);
   cursor: pointer;
 }
-.home .delete:focus {
+a:last-of-type > i:active {
+    background: hsl(33, 100%, 60%);
+}
+.home .delete:focus, 
+.card a:last-of-type:focus {
   outline: 2px dashed pink;
 }
-
+.card a:last-of-type > i {
+  font-size: 1.3rem;
+}
 </style>
 
