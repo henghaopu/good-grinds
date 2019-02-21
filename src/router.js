@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import AddingCoffee from '@/components/AddingCoffee'
+import EditingCoffee from '@/components/EditingCoffee'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/adding-coffee',
       name: 'adding-coffee',
       component: AddingCoffee
+    },
+    {
+      path: '/editing-coffee/:coffee_path',
+      name: 'editing-coffee',
+      component: EditingCoffee
     },
     {
       path: '/about',
