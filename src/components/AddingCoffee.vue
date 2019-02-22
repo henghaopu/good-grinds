@@ -88,6 +88,10 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+.add-coffee {
+    font-family: 'Handlee', cursive;
+}
 .warning {
     color: red;
     margin: 0;

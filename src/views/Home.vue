@@ -74,6 +74,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Handlee');
 .home {
   display: grid;
   /* grid-template-columns: 1fr 1fr 1fr; */
@@ -81,13 +82,15 @@ export default {
   grid-gap: 1.875rem;
   margin-top: 3.75rem;
 }
-
 .home h2 {
+  font-family: 'Handlee', cursive;
   font-size: 1.8rem;
   text-align: center;
   margin-top: 0;
 }
-
+.chip {
+  font-family: 'Handlee', cursive;
+}
 .home .ingredients {
   margin: 30px auto;
 }

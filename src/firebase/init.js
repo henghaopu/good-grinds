@@ -19,4 +19,6 @@ const firebaseApp = firebase.initializeApp(config);
 
 // export firestore database
 export default firebaseApp.firestore()
+// Get a reference to the storage service, which is used to create references in your storage bucket
+export var storage = firebaseApp.storage() 
 // then we can go into another file such as a component and start to interact with the data by using import 
